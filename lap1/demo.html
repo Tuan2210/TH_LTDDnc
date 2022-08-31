@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = document.createElement('input');
+        a.setAttribute('placeholder', 'input a');
+        document.body.appendChild(a);
+        console.log(a);
+
+        var b = document.createElement('input');
+        a.setAttribute('placeholder', 'input b');
+        document.body.appendChild(b);
+        console.log(b);
+
+        var btn = document.createElement('button');
+        btn.innerHTML = 'sum'
+        document.body.appendChild(btn);
+
+        btn.onclick = function() {
+            var aValue = parseInt(a.value);
+            var bValue = parseInt(b.value);
+            console.log(aValue, bValue, aValue + bValue);
+        }
+    </script>
+</body>
+
+</html>
