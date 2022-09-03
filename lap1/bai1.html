@@ -68,7 +68,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="aRow">
                 <p>A:</p>
@@ -80,9 +80,55 @@
             </div>
             <input type="button" value="SUM" id="btnSum">
         </div>
-    </div>
+    </div> -->
+    <div id="root"></div>
 
     <script>
+        const root = document.getElementById('root'),
+            container = document.createElement('div'),
+            row = document.createElement('div'),
+            aRow = document.createElement('div'),
+            bRow = document.createElement('div'),
+            aP = document.createElement('p'),
+            bP = document.createElement('p'),
+            inputA = document.createElement('input'),
+            inputB = document.createElement('input'),
+            inputBtn = document.createElement('input')
+
+        container.className = 'container'
+        row.className = 'row'
+            //
+        aRow.className = 'aRow'
+        aP.innerHTML = 'A:'
+        inputA.id = 'inputA' //inputA.setAttribute('id', 'inputA')
+        inputA.type = 'number'
+        inputA.placeholder = '\tinput a'
+            //
+        bRow.className = 'bRow'
+        bP.innerHTML = 'B:'
+        inputB.id = 'inputB'
+        inputB.type = 'number'
+        inputB.placeholder = '\tinput b'
+            //
+        inputBtn.type = 'button'
+        inputBtn.id = 'btnSum'
+        inputBtn.value = 'SUM'
+
+
+        console.log(container);
+        root.appendChild(container);
+        container.appendChild(row);
+        //
+        row.appendChild(aRow);
+        aRow.appendChild(aP);
+        aRow.appendChild(inputA);
+        //
+        row.appendChild(bRow);
+        bRow.appendChild(bP);
+        bRow.appendChild(inputB);
+        //
+        row.appendChild(inputBtn)
+
         // var a = document.createElement('input');
         // a.setAttribute('placeholder', 'input a');
         // document.body.appendChild(a);
@@ -98,9 +144,8 @@
         // document.body.appendChild(btn);
 
         var a = document.getElementById('inputA'),
-            b = document.getElementById('inputB');
-
-        var btn = document.getElementById('btnSum');
+            b = document.getElementById('inputB'),
+            btn = document.getElementById('btnSum');
         btn.onclick = function() {
             var aValue = parseInt(a.value);
             var bValue = parseInt(b.value);
