@@ -14,7 +14,7 @@ export default function App() {
         <Entypo name="lock" size={150} color="black"></Entypo>
       </View>
       <View>
-        <Text style={styles.textForgetPass}>FORGET PASSWORD</Text>
+        <Text style={styles.lblForgetPass}>FORGET PASSWORD</Text>
       </View>
       <View>
         <Text style={styles.text}>
@@ -28,7 +28,7 @@ export default function App() {
           color="black"
           style={styles.icon1}
         />
-        <TextInput placeholder="email" style={styles.input}></TextInput>
+        <TextInput placeholder="Email" style={styles.input}></TextInput>
       </View>
       <View style={styles.loginButton}>
         <Button title="NEXT" color="#E3C000"></Button>
@@ -43,15 +43,15 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: "absolute",
-    left: 100,
-    top: 76,
+    left: 130,
+    marginTop: '20%'
   },
-  textForgetPass: {
+  lblForgetPass: {
     position: "absolute",
     width: 133,
     height: 58,
     left: 113,
-    top: 230,
+    marginTop: '55%',
     fontSize: 20,
     fontWeight: "700",
     textAlign: "center",
