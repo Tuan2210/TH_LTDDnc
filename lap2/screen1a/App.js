@@ -10,14 +10,10 @@ export default function App() {
           <Image source={{ uri: "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/lap2/images/circle.png" }} style={styles.circle} />
           <Text style={styles.title}>GROW {'\n'} YOUR BUSINESS</Text>
           <Text style={styles.line1}>We will help you to grow your business using online server</Text>
-          {/* <View style={{ flexDirection: 'row', marginTop: '50' }}> */}
-            {/* <View style={{ marginHorizontal: 25 }}> */}
-              <Button style={styles.btnLogin} title='LOGIN' color={'#E3C000'} />
-            {/* </View> */}
-            {/* <View style={{ marginHorizontal: 25 }}> */}
-              <Button style={styles.btnSignUp} title='SIGN UP' color={'#E3C000'} />
-            {/* </View> */}
-          {/* </View> */}
+          <View style={styles.buttons}>
+            <Button style={styles.btnLogin} title='LOGIN' color={'#E3C000'} />
+            <Button style={styles.btnSignUp} title='SIGN UP' color={'#E3C000'} />
+          </View>
           <Text style={styles.line2}>HOW WE WORK</Text>
         </ImageBackground>
       </View>
@@ -53,13 +49,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: '30%'
   },
-  // btnLogin: {
-  //   marginTop: '50%'
-  // },
+  buttons: {
+    marginTop: '10%',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+    // justifyContent: 'space-between'
+  },
+  btnLogin: {
+    width: 30
+  },
+  btnSignUp: {
+    width: 30
+  },
   line2:{
     textAlign: "center",
     fontSize: 18,
     fontWeight: 'bold',
+    marginTop: '10%',
     marginBottom: '-50%'
   }
 });
