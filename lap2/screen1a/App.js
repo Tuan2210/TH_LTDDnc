@@ -1,7 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View, Image, Button } from 'react-native';
-// import { LinearGradient } from "expo-linear-gradient";
 
 export default function App() {
   return (
@@ -10,11 +9,15 @@ export default function App() {
           <Image source={{ uri: "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/lap2/images/circle.png" }} style={styles.circle} />
           <Text style={styles.title}>GROW {'\n'} YOUR BUSINESS</Text>
           <Text style={styles.line1}>We will help you to grow your business using online server</Text>
-          <View style={styles.buttons}>
-            <Button style={styles.btnLogin} title='LOGIN' color={'#E3C000'} />
-            <Button style={styles.btnSignUp} title='SIGN UP' color={'#E3C000'} />
+          <View style={styles.login}>
+            <Button title="LOGIN" color="#E3C000"></Button>
           </View>
-          <Text style={styles.line2}>HOW WE WORK</Text>
+          <View style={styles.signUp}>
+            <Button title="SIGN UP" color="#E3C000"></Button>
+          </View>
+          <View style={styles.line2}>
+            <Text style={{textAlign: "center", fontSize: 18, fontWeight: 'bold'}}>HOW WE WORK</Text>
+          </View>
         </ImageBackground>
       </View>
   );
@@ -49,24 +52,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: '30%'
   },
-  buttons: {
-    marginTop: '10%',
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-    // justifyContent: 'space-between'
+  login: {
+    position: "absolute",
+    width: 125,
+    height: 45,
+    left: 100,
+    top: 570,
   },
-  btnLogin: {
-    width: 30
-  },
-  btnSignUp: {
-    width: 30
+  signUp: {
+    position: "absolute",
+    width: 125,
+    height: 45,
+    left: 320,
+    top: 570,
+
   },
   line2:{
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginTop: '10%',
-    marginBottom: '-50%'
+    marginTop: 150,
+    marginBottom: -120
   }
 });
 
