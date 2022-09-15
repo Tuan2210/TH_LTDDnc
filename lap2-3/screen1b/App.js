@@ -23,7 +23,7 @@ export default function App() {
             <Text style={styles.title}>FORGET{'\n'}PASSWORD</Text>
           </View>
           <View>
-            <Text style={styles.label}>Provied your account's email for which you {'\n'}want to reset your password</Text>
+            <Text style={styles.label}>Provide your account's email for which you {'\n'}want to reset your password</Text>
           </View>
           <View style={styles.searSection}>
             <MaterialCommunityIcons
