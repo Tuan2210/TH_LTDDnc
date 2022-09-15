@@ -2,6 +2,10 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View, Image, Button } from 'react-native';
 
+//yarn create expo-app screen1a
+//yarn add expo
+//yarn start
+
 export default function App() {
   return (
       <View style={styles.container}>

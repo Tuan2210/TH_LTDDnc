@@ -2,6 +2,10 @@ import { ImageBackground, Image, StyleSheet, Text, View, TextInput, Button } fro
 // import { LinearGradient } from "expo-linear-gradient";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
+//yarn create expo-app screen1b
+//yarn add expo
+//yarn start
+
 export default function App() {
   return (
     <View style={styles.container}>
