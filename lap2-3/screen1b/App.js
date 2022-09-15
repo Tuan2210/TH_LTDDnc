@@ -1,106 +1,101 @@
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import { LinearGradient } from "expo-linear-gradient";
+import { ImageBackground, Image, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+// import { LinearGradient } from "expo-linear-gradient";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function App() {
   return (
-    <LinearGradient
-      colors={["rgb(230, 255, 255)", "#BDF6C6"]}
-      style={styles.container}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-    >
-      <View style={styles.icon}>
-        <Entypo name="lock" size={150} color="black"></Entypo>
-      </View>
-      <View>
-        <Text style={styles.lblForgetPass}>FORGET PASSWORD</Text>
-      </View>
-      <View>
-        <Text style={styles.text}>
-          Provied your account's email for which you want to reset your password
-        </Text>
-      </View>
-      <View style={styles.searSection}>
-        <MaterialCommunityIcons
-          name="email-newsletter"
-          size={25}
-          color="black"
-          style={styles.icon1}
-        />
-        <TextInput placeholder="Email" style={styles.input}></TextInput>
-      </View>
-      <View style={styles.loginButton}>
-        <Button title="NEXT" color="#E3C000"></Button>
-      </View>
-    </LinearGradient>
+    <View style={styles.container}>
+      {/* <LinearGradient
+        colors={["rgb(230, 255, 255)", "#BDF6C6"]}
+        style={styles.container}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      > */}
+        <ImageBackground 
+          source={{ uri: 'https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/lap2-3/images/bg1b.png'}} 
+          resizeMode='cover' 
+          style={styles.bg1b}>
+          <View style={styles.iconLock}>
+            {/* <Entypo name="lock" size={150} color="black"></Entypo> */}
+          <Image source={{ uri: "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/lap2-3/images/lock.png" }} style={styles.iconLock} />
+          </View>
+          <View>
+            <Text style={styles.title}>FORGET{'\n'}PASSWORD</Text>
+          </View>
+          <View>
+            <Text style={styles.label}>Provied your account's email for which you {'\n'}want to reset your password</Text>
+          </View>
+          <View style={styles.searSection}>
+            <MaterialCommunityIcons
+              name="email-newsletter"
+              size={25}
+              color="black"
+              style={styles.icon1}
+            />
+            <TextInput placeholder="Email" style={styles.input}></TextInput>
+          </View>
+          <View style={styles.btnNext}>
+            <Button title="NEXT" color="#E3C000"></Button>
+          </View>
+        </ImageBackground>
+      {/* </LinearGradient> */}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1
+  },
+  bg1b: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  icon: {
-    position: "absolute",
-    left: 130,
-    marginTop: '20%'
+  iconLock: {
+    marginTop: '-50%',
+    width: 142,
+    height: 150
   },
-  lblForgetPass: {
-    position: "absolute",
-    width: 133,
-    height: 58,
-    left: 113,
-    marginTop: '55%',
-    fontSize: 20,
-    fontWeight: "700",
+  title: {
     textAlign: "center",
-    lineHeight: 29,
+    fontSize: 30,
+    fontWeight: 'bold',
+    top: '10%'
   },
-  text: {
-    position: "absolute",
-    width: 302,
-    height: 53,
-    left: 30,
-    top: 320,
-    fontSize: 15,
-    fontWeight: "bold",
+  label: {
     textAlign: "center",
-    lineHeight: 18,
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: '10%'
   },
   searSection: {
-    position: "absolute",
+    justifyContent: "center",
+    marginTop: '10%',
     width: 305,
     height: 45,
-    left: 30,
-    top: 383,
     backgroundColor: "#C4C4C4",
-    borderColor: "#000000",
-    borderWidth: 1,
+    borderColor: "black",
+    borderWidth: 1
   },
   searchIcon: {
     position: "absolute",
     width: 48,
     height: 45,
-    left: 30,
-    top: 383,
+    left: 30
+  },
+  icon1: {
+    padding: 10
   },
   input: {
     position: "absolute",
-    borderColor: "#000000",
-    paddingTop: 8,
-    paddingRight: 10,
-    paddingBottom: 30,
-    paddingLeft: 40,
+    marginLeft: '15%'
   },
-  icon1: {
-    padding: 10,
-  },
-  loginButton: {
-    position: "absolute",
+  btnNext: {
+    justifyContent: 'center',
+    marginTop: '10%',
+    marginBottom: '-50%',
     width: 305,
-    height: 45,
-    left: 30,
-    top: 471,
+    height: 50
   },
 });
