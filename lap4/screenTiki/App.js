@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
 import React, { useState } from "react";
 
 //npm i react-native-safe-area-context
@@ -10,16 +10,11 @@ export default function App() {
   const [count, setCount] = useState(1);
   const onPressPlus = () => setCount(count => count + 1);
   const onPressMinus = () => setCount(count => count - 1);
-
-  // function handleQuantityBook(minCount){
-  //   if(count<1) {
-  //     [count, setCount] = useState(1)
-  // }
   
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.view1}>
-        <View style={styles.view1_twoColumn}>
+        <View style={styles.viewTwoColumn}>
           <View style={styles.view1_left}>
             <Image source={{ uri: 'https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/lap4/images/book.png'}} style={styles.imgBook}/>
             <Text style={styles.txt}>Mã giảm giá đã lưu</Text>
@@ -45,8 +40,54 @@ export default function App() {
               </TouchableOpacity>
               <Text style={styles.txtMuaSau}>Mua sau</Text>
             </View>
-            <Text style={{ fontSize: 20, color: '#134FEC'}}>Xem tại đây</Text>
+            <Text style={{fontSize: 20, color: '#134FEC'}}>Xem tại đây</Text>
           </View>
+        </View>
+      </View>
+      <View style={styles.view2}>
+        <View style={styles.viewTwoColumn}>
+          <View style={styles.viewMaGiamGia}>
+            <View style={styles.viewYellow}/>
+            <Text style={styles.txtMaGiamGia}>Mã giảm giá</Text>
+          </View>
+          {/* <View style={styles.viewBtnApDung}> */}
+            {/* <Button
+              style={styles.btnApDung}
+              title='Áp dụng'
+              color='#0A5EB7'/> */}
+          <View style={{ left: 60 }}>
+            <TouchableOpacity style={styles.btnApDung}
+              // onPress={}
+            >
+              <Text style={styles.txtApDung}>Áp dụng</Text>
+            </TouchableOpacity>
+          </View>
+          {/* </View> */}
+        </View>
+      </View>
+      <View style={styles.view3}>
+        <View style={styles.viewTwoColumn}>
+          <Text style={styles.txt}>Bạn có phiếu quà tặng Tiki/Got it/ Urbox?</Text>
+          <Text style={styles.txtNhap}>Nhập tại đây</Text>    
+        </View>
+      </View>
+      <View style={styles.view4}>
+        <View style={styles.viewTwoColumn}>
+          <Text style={styles.txtTamTinh}>Tạm tính</Text>
+          <Text style={styles.priceTamTinh}>{141800*count} đ</Text>
+        </View>
+      </View>
+      <View style={styles.view5}>
+        <View style={styles.viewTwoColumn}>
+          <Text style={styles.txtThanhTien}>Thành tiền</Text>
+          <Text style={styles.priceThanhTien}>{141800*count} đ</Text>
+        </View>
+        <View style={styles.viewDat}>
+          <TouchableOpacity style={styles.btnDat}
+          // onPress={}
+          >
+            <Text style={styles.txtDat}>TIẾN HÀNH ĐẶT HÀNG</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -63,7 +104,7 @@ const styles = StyleSheet.create({
     height: 300,
     paddingTop: 20
   },
-  view1_twoColumn:{
+  viewTwoColumn:{
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start', // if you want to fill rows left to right
@@ -134,5 +175,106 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#134FEC',
     left: '580%'
+  },
+  view2: {
+    backgroundColor: '#fff',
+    height: 150,
+    flexDirection: 'row',
+    alignItems: 'center',
+    // borderColor: '#808080',
+    // borderStyle: 'solid',
+    // borderWidth: 1,
+  },
+  viewMaGiamGia: {
+    borderColor: '#808080',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    left: 15,
+    width: '67%',
+  },
+  viewYellow: {
+    backgroundColor: '#F2DD1B',
+    width: 40,
+    height: 20,
+    margin: 10
+  },
+  txtMaGiamGia: {
+    fontSize: 25,
+    padding: 10
+  },
+  btnApDung: {
+    backgroundColor: '#0A5EB7',
+    width: 130,
+    height: 76,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  txtApDung: {
+    fontSize: 25,
+    color: '#fff'
+  },
+  view3: {
+    backgroundColor: '#fff',
+    top: 20,
+    padding: 15
+  },
+  txtNhap: {
+    fontSize: 20,
+    color: '#134FEC',
+    left: 25
+  },
+  view4: {
+    backgroundColor: '#fff',
+    top: 40,
+    paddingBottom: 20
+  },
+  txtTamTinh: {
+    fontSize: 25,
+    padding: 15
+  },
+  priceTamTinh: {
+    fontSize: 30,
+    color: 'red',
+    fontWeight: 'bold',
+    left: '400%',
+    paddingTop: 12
+  },
+  view5: {
+    backgroundColor: '#fff',
+    top: 150,
+    height: '22%',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  txtThanhTien: {
+    fontSize: 25,
+    paddingLeft: 15,
+    color: '#808080'
+  },
+  priceThanhTien: {
+    fontSize: 30,
+    color: 'red',
+    fontWeight: 'bold',
+    left: '600%',
+  },
+  viewDat: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    top: '-2%'
+  },
+  btnDat: {
+    backgroundColor: '#E53935',
+    width: 400,
+    height: 76,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  txtDat: {
+    color: '#fff',
+    fontSize: 25,
+    fontWeight: 'bold'
   }
 });
