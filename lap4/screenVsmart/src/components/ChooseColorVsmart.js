@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-n
 //link: https://reactnative.dev/docs/navigation
 //npm i @react-navigation/native @react-navigation/native-stack
 //expo i react-native-screens react-native-safe-area-context
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 // const NavigateToDetails = props => {
@@ -14,45 +14,61 @@ const ChooseColorVsmart = props => {
     const [imgVsmart, setImgVsmart] = useState(require('../components/images/vsmart_live_xanh2.png'));
     const [txtColorVsmart, settxtColorVsmart] = useState('Màu xanh');
     const [styleTxtColor, setStyleTxtColor] = useState(StyleSheet.create({ color: '#234896', fontSize: 20, top: 10 }));
+    const [nameScreen, setNameScreen] = useState('BlueVsmart');
     const onPressSilverVsmart = () => {
         setImgVsmart(imgVsmart => imgVsmart = (require('../components/images/vs_bac1.png')));
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu bạc');
         setStyleTxtColor(styleTxtColor => styleTxtColor = StyleSheet.create({ color: 'gray', fontSize: 20, top: 10 }));
+        setNameScreen(nameScreen => nameScreen = 'SilverVsmart');
     }
     const onPressRedVsmart = () => {
         setImgVsmart(imgVsmart => imgVsmart = (require('../components/images/vs_red_a2.png')));
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu đỏ');
         setStyleTxtColor(styleTxtColor => styleTxtColor = StyleSheet.create({ color: 'red', fontSize: 20, top: 10 }));
+        setNameScreen(nameScreen => nameScreen = 'RedVsmart');
     }
     const onPressBlackVsmart = () => {
         setImgVsmart(imgVsmart => imgVsmart = (require('../components/images/vsmart_black_star1.png')));
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu đen');
         setStyleTxtColor(styleTxtColor => styleTxtColor = StyleSheet.create({ color: 'black', fontSize: 20, top: 10 }));
+        setNameScreen(nameScreen => nameScreen = 'BlackVsmart');
     }
     const onPressBlueVsmart = () => {
         setImgVsmart(imgVsmart => imgVsmart = (require('../components/images/vsmart_live_xanh2.png')));
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu xanh');
         setStyleTxtColor(styleTxtColor => styleTxtColor = StyleSheet.create({ color: '#234896', fontSize: 20, top: 10 }));
+        setNameScreen(nameScreen => nameScreen = 'BlueVsmart');
     }
 
     //handle navigation link screen Vsmart
     const onPressLinkColor = () => {
-        if (TouchableOpacity.onPress = { onPressSilverVsmart }) {
-            props.navigation.navigate('SilverVsmart');
-            return;
+        // if (nameScreen.includes('SilverVsmart')) 
+        //     return props.navigation.navigate('SilverVsmart');
+        // if (nameScreen.includes('RedVsmart')) 
+        //     return props.navigation.navigate('RedVsmart');
+        // if (nameScreen.includes('BlackVsmart')) 
+        //     return props.navigation.navigate('BlackVsmart');
+        // if (nameScreen.includes('BlueVsmart')) 
+        //     return props.navigation.navigate('BlueVsmart');
+
+        switch (nameScreen) {
+            case 'SilverVsmart':
+                props.navigation.navigate('SilverVsmart');
+                break;
+            case 'RedVsmart':
+                props.navigation.navigate('RedVsmart');
+                break;
+            case 'BlackVsmart':
+                props.navigation.navigate('BlackVsmart');
+                break;
+            case 'BlueVsmart':
+                props.navigation.navigate('BlueVsmart');
+                break;
+            default:
+                props.navigation.navigate('BlueVsmart');
+                break;
         }
-        if (TouchableOpacity.onPress = { onPressRedVsmart }) {
-            props.navigation.navigate('RedVsmart');
-            return;
-        }
-        if (TouchableOpacity.onPress = { onPressBlackVsmart }) {
-            props.navigation.navigate('BlackVsmart');
-            return;
-        }
-        if (TouchableOpacity.onPress = { onPressBlueVsmart }) {
-            props.navigation.navigate('BlueVsmart');
-            return;
-        }
+
     };
 
     return (
@@ -84,12 +100,12 @@ const ChooseColorVsmart = props => {
                         onPress={onPressBlueVsmart}
                     />
                 </View>
-                    <TouchableOpacity 
-                        style={styles.btnXong}
-                        onPress={onPressLinkColor}
-                    >
-                        <Text style={styles.txtXong}>XONG</Text>
-                    </TouchableOpacity>
+                <TouchableOpacity 
+                    style={styles.btnXong}
+                    onPress={onPressLinkColor}
+                >
+                    <Text style={styles.txtXong}>XONG</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
