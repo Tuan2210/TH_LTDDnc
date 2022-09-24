@@ -11,6 +11,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //// import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import ChooseColorVsmart from './src/components/ChooseColorVsmart';
+import SilverVsmart from './src/components/SilverVsmart';
+import RedVsmart from './src/components/RedVsmart';
+import BlackVsmart from './src/components/BlackVsmart';
 import BlueVsmart from './src/components/BlueVsmart';
 
 const Stack = createNativeStackNavigator();
@@ -34,6 +37,9 @@ export default function App() {
           name="ChooseColorVsmart" component={ChooseColorVsmart} options={{ title: 'Home - Choose Color Vsmart' }}
           // options={{ headerShown: false }} //ko show thanh header tên của từng screen
         />
+        <Stack.Screen name="SilverVsmart" component={SilverVsmart} options={{ title: 'Silver Vsmart' }} />
+        <Stack.Screen name="RedVsmart" component={RedVsmart} options={{ title: 'Red Vsmart' }} />
+        <Stack.Screen name="BlackVsmart" component={BlackVsmart} options={{ title: 'Black Vsmart' }} />
         <Stack.Screen name="BlueVsmart" component={BlueVsmart} options={{ title: 'Blue Vsmart' }} />
 
         {/* <Stack.Screen ////

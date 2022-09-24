@@ -3,17 +3,17 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-n
 //link: https://reactnative.dev/docs/navigation
 //npm i @react-navigation/native @react-navigation/native-stack
 //expo i react-native-screens react-native-safe-area-context
-import * as React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 // const NavigateToDetails = props => {
 //     props.navigation.navigate("blueVsmart");
 
 const ChooseColorVsmart = props => {
-    const [imgVsmart, setImgVsmart] = React.useState(require('../components/images/vsmart_live_xanh2.png'));
-    const [txtColorVsmart, settxtColorVsmart] = React.useState('Màu xanh');
-    const [styleTxtColor, setStyleTxtColor] = React.useState(StyleSheet.create({ color: '#234896', fontSize: 20, top: 10 }));
-
+    //handle click choose color Vsmart
+    const [imgVsmart, setImgVsmart] = useState(require('../components/images/vsmart_live_xanh2.png'));
+    const [txtColorVsmart, settxtColorVsmart] = useState('Màu xanh');
+    const [styleTxtColor, setStyleTxtColor] = useState(StyleSheet.create({ color: '#234896', fontSize: 20, top: 10 }));
     const onPressSilverVsmart = () => {
         setImgVsmart(imgVsmart => imgVsmart = (require('../components/images/vs_bac1.png')));
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu bạc');
@@ -34,6 +34,26 @@ const ChooseColorVsmart = props => {
         settxtColorVsmart(txtColorVsmart => txtColorVsmart = 'Màu xanh');
         setStyleTxtColor(styleTxtColor => styleTxtColor = StyleSheet.create({ color: '#234896', fontSize: 20, top: 10 }));
     }
+
+    //handle navigation link screen Vsmart
+    const onPressLinkColor = () => {
+        if (TouchableOpacity.onPress = { onPressSilverVsmart }) {
+            props.navigation.navigate('SilverVsmart');
+            return;
+        }
+        if (TouchableOpacity.onPress = { onPressRedVsmart }) {
+            props.navigation.navigate('RedVsmart');
+            return;
+        }
+        if (TouchableOpacity.onPress = { onPressBlackVsmart }) {
+            props.navigation.navigate('BlackVsmart');
+            return;
+        }
+        if (TouchableOpacity.onPress = { onPressBlueVsmart }) {
+            props.navigation.navigate('BlueVsmart');
+            return;
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -66,7 +86,7 @@ const ChooseColorVsmart = props => {
                 </View>
                     <TouchableOpacity 
                         style={styles.btnXong}
-                        onPress={() => props.navigation.navigate('BlueVsmart')}
+                        onPress={onPressLinkColor}
                     >
                         <Text style={styles.txtXong}>XONG</Text>
                     </TouchableOpacity>
