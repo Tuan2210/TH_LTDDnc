@@ -1,4 +1,5 @@
 import { ImageBackground, Image, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import * as React from 'react';
 // import { LinearGradient } from "expo-linear-gradient";
 import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
