@@ -1,12 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image, FlatList } from "react-native";
 import React, { useState } from "react";
 
-//link: https://reactnative.dev/docs/navigation
-//npm i @react-navigation/native @react-navigation/native-stack
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 //link doc: https://reactnative.dev/docs/flatlist
+
+//link rating: https://www.npmjs.com/package/react-native-ratings
+//npm i react-native-ratings
+import { Rating } from "react-native-ratings";
 
 import columnFlatListData from '../columnFlatListData';
 
@@ -14,8 +13,9 @@ const Item = ({
   item,
   onPress,
   viewItemList,
-  imgPrd,
   viewItem,
+  imgPrd,
+  viewTwoColumn,
 }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item, viewItemList]}>
     <View style={viewItem}>
@@ -24,6 +24,18 @@ const Item = ({
         style={[styles.imgProduct, imgPrd]}
       />
       <Text>{item.nameProduct}</Text>
+      <View style={viewTwoColumn}>
+        <Rating
+          imageSize={22}
+          ratingBackgroundColor="E5E5E5"
+          style={{ padding: 5 }}
+        />
+        <Text style={{ marginLeft: 2, padding: 5 }}>(15)</Text>
+      </View>
+      <View style={viewTwoColumn}>
+        <Text style={{ fontWeight: 'bold', paddingRight: 10 }}>{item.price}</Text>
+        <Text>{item.discount}</Text>
+      </View>
     </View>
   </TouchableOpacity>
 );
@@ -46,8 +58,14 @@ export default function ColumnFlatList() {
                 item={item}
                 onPress={() => setSelectedId(item.id)}
                 viewItemList={{ flex: 1, backgroundColor }}
-                viewItem={{}}
-                imgPrd={{ width: 170, height: 100 }}
+                viewItem={{ justifyContent: "center", padding: 15 }}
+                imgPrd={{ width: "auto", height: 100 }}
+                viewTwoColumn={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                }}
               />
             );
           }
@@ -61,9 +79,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-  },
-  viewThacMac: {
-    backgroundColor: "#E5E5E5",
-    padding: 20,
   },
 });
