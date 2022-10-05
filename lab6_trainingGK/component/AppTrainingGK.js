@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   },
   itemData: {
     borderWidth: 1,
+    borderColor: '#7000FF',
     borderRadius: 20,
     margin: 5,
     marginHorizontal: 10,
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: '#fff'
   },
   txtNumber: {
     fontSize: 18,
