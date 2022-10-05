@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
   },
   styleDataList: {
     flex: 1,
-    marginTop: 60,
+    marginTop: 65,
+    paddingTop: 10,
     backgroundColor: "lightgray",
   },
   itemData: {
