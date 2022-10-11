@@ -46,6 +46,7 @@ export default function PassDataFlatlist_Row({navigation}) {
   return (
     <View style={styles.container}>
       <FlatList
+        // horizontal={true}
         data={shoesData}
         renderItem={({ item, index }) => {
           const backgroundColor = item.id === selectedId ? "#FDC251" : "#D9CEBA";
