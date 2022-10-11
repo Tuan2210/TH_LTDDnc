@@ -1,8 +1,9 @@
 # TH_LTDDnc
+# //npm i expo
 # //npm i create-expo-app
 # npx create-expo-app 'name-prj'
 # npm i --save-dev @types/react-native
-# npm i expo @react-navigation/native @react-navigation/native-stack
+# npm i @react-navigation/native @react-navigation/native-stack
 # import { NavigationContainer } from "@react-navigation/native";
 # import { createNativeStackNavigator } from "@react-navigation/native-stack";
 # const Stack = createNativeStackNavigator();
