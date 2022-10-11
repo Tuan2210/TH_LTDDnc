@@ -7,17 +7,25 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import AppTrainingGK from './component/AppTrainingGK';
+import AppTrainingGK_showInputFlatlist from "./components/AppTrainingGK_showInputFlatlist";
+import PassDataFlatlist_Row from './components/PassDataFlatlist_Row';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="AppTrainingGK">
+      {/* <Stack.Navigator initialRouteName="AppTrainingGK_showInputFlatlist"> */}
+      <Stack.Navigator initialRouteName="PassDataFlatlist_Row">
         <Stack.Screen
-          name="AppTrainingGK"
-          component={AppTrainingGK}
+          name="AppTrainingGK_showInputFlatlist"
+          component={AppTrainingGK_showInputFlatlist}
+          options={{ title: "App ôn tập GK_19468641_Đinh Quang Tuấn" }}
+        ></Stack.Screen>
+        
+        <Stack.Screen
+          name="PassDataFlatlist_Row"
+          component={PassDataFlatlist_Row}
           options={{ title: "App ôn tập GK_19468641_Đinh Quang Tuấn" }}
         ></Stack.Screen>
       </Stack.Navigator>
