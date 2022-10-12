@@ -9,22 +9,41 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
+//npm i expo-screen-orientation
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function AppTrainingGK(){
-    const [dataList, setDataList] = useState([]);
-    const [infoToDo, setInfoToDo] = useState('');
+  const [dataList, setDataList] = useState([]);
+  const [infoToDo, setInfoToDo] = useState("");
 
-    return (
-      <View style={styles.container}>
-        <TextInput
-          style={styles.styleInput}
-          placeholder="Nhập thông tin"
-          onChangeText={(infoToDo) => setInfoToDo(infoToDo)}
-          value={infoToDo}
-          //   keyboardType="numeric"
-        />
+  //handle screen portrait-landscape orientation
+  const [orientationIsLandscape, setOrientation] = useState(true);
+  async function changeScreenOrientation() {
+    if (orientationIsLandscape == true) {
+      ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+      );
+    } else if (orientationIsLandscape == false) {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    }
+  }
+  function toggleOrientation() {
+    setOrientation(!orientationIsLandscape);
+    changeScreenOrientation();
+  }
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.styleInput}
+        placeholder="Nhập thông tin"
+        onChangeText={(infoToDo) => setInfoToDo(infoToDo)}
+        value={infoToDo}
+        //   keyboardType="numeric"
+      />
+      <View style={styles.viewTwoColumn}>
         <TouchableOpacity
-          style={styles.btnAdd}
+          style={styles.btn}
           onPress={() => {
             setDataList([...dataList, infoToDo]);
             setInfoToDo("");
@@ -32,32 +51,43 @@ export default function AppTrainingGK(){
         >
           <Text style={{ fontSize: 20, alignSelf: "center" }}>Thêm</Text>
         </TouchableOpacity>
-        <FlatList
-          style={styles.styleDataList}
-          data={dataList}
-          renderItem={({ item, index }) => {
-            return (
-              <View style={styles.itemData}>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.txtNumber}>{index + 1} </Text>
-                  <Text style={{ fontSize: 18 }}>{item}</Text>
-                </View>
-                <TouchableOpacity
-                  style={styles.btnDelete}
-                  onPress={() => {
-                    const dataListTemp = [...dataList];
-                    dataListTemp.splice(index, 1);
-                    setDataList(dataListTemp);
-                  }}
-                >
-                  <Text style={{ color: "#fff", padding: 10, alignSelf: 'center' }}>Xóa</Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
+        <TouchableOpacity 
+          style={styles.btn} 
+          onPress={toggleOrientation}
+        >
+          <Text style={{ fontSize: 20 }}>Xoay màn hình</Text>
+        </TouchableOpacity>
       </View>
-    );
+      <FlatList
+        style={styles.styleDataList}
+        data={dataList}
+        renderItem={({ item, index }) => {
+          return (
+            <View style={styles.itemData}>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.txtNumber}>{index + 1} </Text>
+                <Text style={{ fontSize: 18 }}>{item}</Text>
+              </View>
+              <TouchableOpacity
+                style={styles.btnDelete}
+                onPress={() => {
+                  const dataListTemp = [...dataList];
+                  dataListTemp.splice(index, 1);
+                  setDataList(dataListTemp);
+                }}
+              >
+                <Text
+                  style={{ color: "#fff", padding: 10, alignSelf: "center" }}
+                >
+                  Xóa
+                </Text>
+              </TouchableOpacity>
+            </View>
+          );
+        }}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -72,11 +102,17 @@ const styles = StyleSheet.create({
     top: 30,
     alignSelf: "center",
   },
-  btnAdd: {
+  viewTwoColumn: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  btn: {
     backgroundColor: "orange",
     padding: 10,
-    width: "20%",
-    top: 50,
+    margin: 20, 
+    marginTop: 100,
     alignSelf: "center",
     borderColor: "black",
     borderStyle: "solid",
@@ -84,13 +120,11 @@ const styles = StyleSheet.create({
   },
   styleDataList: {
     flex: 1,
-    marginTop: 65,
-    paddingTop: 10,
     backgroundColor: "lightgray",
   },
   itemData: {
     borderWidth: 1,
-    borderColor: '#7000FF',
+    borderColor: "#7000FF",
     borderRadius: 20,
     margin: 5,
     marginHorizontal: 10,
@@ -98,7 +132,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: '#fff'
+    backgroundColor: "#fff",
   },
   txtNumber: {
     fontSize: 18,
@@ -109,6 +143,6 @@ const styles = StyleSheet.create({
   btnDelete: {
     backgroundColor: "#7000FF",
     borderRadius: 10,
-    width: 55
+    width: 55,
   },
 });

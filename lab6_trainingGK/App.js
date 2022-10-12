@@ -16,8 +16,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator initialRouteName="AppTrainingGK_showInputFlatlist"> */}
-      <Stack.Navigator initialRouteName="PassDataFlatlist_Row">
+      <Stack.Navigator initialRouteName="AppTrainingGK_showInputFlatlist">
+      {/* <Stack.Navigator initialRouteName="PassDataFlatlist_Row"> */}
         <Stack.Screen
           name="AppTrainingGK_showInputFlatlist"
           component={AppTrainingGK_showInputFlatlist}
