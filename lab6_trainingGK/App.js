@@ -6,8 +6,6 @@ import React, {useState} from "react";
 //npm i @react-navigation/native @react-navigation/native-stack
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-//npm i expo-screen-orientation
-import * as ScreenOrientation from 'expo-screen-orientation';
 
 import AppTrainingGK_showInputFlatlist from "./components/AppTrainingGK_showInputFlatlist";
 import PassDataFlatlist_Row from './components/PassDataFlatlist_Row';
@@ -16,13 +14,6 @@ import ShoesDetails from './components/ShoesDetails';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // const [orientationIsLandscape, setOrientation] = useState(false);
-  // if (orientationIsLandscape == true) {
-  //   ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
-  // } else if (orientationIsLandscape == false) {
-  //   ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
-  // }
-
   return (
     <NavigationContainer>
       {/* <Stack.Navigator initialRouteName="AppTrainingGK_showInputFlatlist"> */}

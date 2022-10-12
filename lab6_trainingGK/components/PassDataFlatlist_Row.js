@@ -8,6 +8,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
+//npm i expo-screen-orientation
+import * as ScreenOrientation from 'expo-screen-orientation';
+
 import shoesData from './shoesData';
 
 const Item = ({
@@ -42,77 +45,101 @@ export default function PassDataFlatlist_Row({navigation}) {
   //hanle item change bg color when choosen
   const [selectedId, setSelectedId] = useState(null);
 
+  //handle screen portrait-landscape orientation
+  const [orientationIsLandscape, setOrientation] = useState(true);
+  async function changeScreenOrientation() {
+    if (orientationIsLandscape == true) {
+      ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
+      );
+    } else if (orientationIsLandscape == false) {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    }
+  }
+  function toggleOrientation() {
+    setOrientation(!orientationIsLandscape);
+    changeScreenOrientation();
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity 
-        style={styles.btnOk}
-        onPress={() => { 
-          navigation.navigate("ShoesDetails", { message: link });
-        }}
-      >
-        <Text style={{fontSize: 20}}>OK</Text>
-      </TouchableOpacity>
+      <View style={styles.viewTwoColumn}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            navigation.navigate("ShoesDetails", { message: link });
+          }}
+        >
+          <Text style={{ fontSize: 20 }}>OK</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={toggleOrientation}
+        >
+          <Text style={{ fontSize: 20 }}>Change screen orientation</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         // horizontal={true}
         data={shoesData}
         renderItem={({ item, index }) => {
-          const backgroundColor = item.id === selectedId ? "#FDC251" : "#D9CEBA";
+          const backgroundColor =
+            item.id === selectedId ? "#FDC251" : "#D9CEBA";
 
           function changeImgByIdItem() {
             // if(item.id==='1') setLink(img1)
 
             // if (item.id === selectedId) {
-              switch (item.id) {
-                case "1":
-                  setLink(img1);
-                  break;
-                case "2":
-                  setLink(img2);
-                  break;
-                case "3":
-                  setLink(img3);
-                  break;
-                case "4":
-                  setLink(img4);
-                  break;
-                case "5":
-                  setLink(img5);
-                  break;
-                case "6":
-                  setLink(img6);
-                  break;
-                case "7":
-                  setLink(img7);
-                  break;
-                default:
-                  break;
-              }
+            switch (item.id) {
+              case "1":
+                setLink(img1);
+                break;
+              case "2":
+                setLink(img2);
+                break;
+              case "3":
+                setLink(img3);
+                break;
+              case "4":
+                setLink(img4);
+                break;
+              case "5":
+                setLink(img5);
+                break;
+              case "6":
+                setLink(img6);
+                break;
+              case "7":
+                setLink(img7);
+                break;
+              default:
+                break;
             }
+          }
           // }
 
           return (
             <Item
               item={item}
               onPress={() => {
-                  setSelectedId(item.id);
-                  changeImgByIdItem();
-                }
-              }
+                setSelectedId(item.id);
+                changeImgByIdItem();
+              }}
               viewItem={{
                 backgroundColor,
-                marginTop: '5%',
+                marginTop: "5%",
                 padding: 10,
-                alignSelf: 'center',
-                width: '90%',
+                alignSelf: "center",
+                width: "90%",
                 flexDirection: "row",
                 flexWrap: "wrap",
                 // alignItems: "flex-start",
-                alignItems: 'center',
+                alignItems: "center",
                 borderRadius: 15,
               }}
               viewTxtItemShoes={{
                 // alignSelf: 'center',
-                marginLeft: '20%'
+                marginLeft: "20%",
               }}
             />
           );
@@ -128,17 +155,22 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     backgroundColor: "#FFF9F9",
   },
-  btnOk: {
+  viewTwoColumn: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    justifyContent: "center"
+  },
+  btn: {
     margin: 15,
-    alignSelf: "center",
-    backgroundColor: 'orange',
-    width: '50%',
-    height: 40,
-    borderColor: 'black',
+    backgroundColor: "orange",
+    width: "40%",
+    height: 50,
+    borderColor: "black",
     borderWidth: 1,
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderRadius: 10,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
