@@ -37,7 +37,6 @@ export default function PassDataFlatlist_Row({navigation}) {
   var img7 = require("../images/color_removebg-preview.png");
 
   // var allImgItems = {img1, img2, img3, img4, img5, img6, img7};
-  // const [img, setImg] = useState(null);
   const [link, setLink] = useState(null);
 
   //hanle item change bg color when choosen
@@ -45,6 +44,14 @@ export default function PassDataFlatlist_Row({navigation}) {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity 
+        style={styles.btnOk}
+        onPress={() => { 
+          navigation.navigate("ShoesDetails", { message: link });
+        }}
+      >
+        <Text style={{fontSize: 20}}>OK</Text>
+      </TouchableOpacity>
       <FlatList
         // horizontal={true}
         data={shoesData}
@@ -53,47 +60,33 @@ export default function PassDataFlatlist_Row({navigation}) {
 
           function changeImgByIdItem() {
             // if(item.id==='1') setLink(img1)
-            // if (item.id === "2") setLink(img2);
-            // if (item.id === "3") setLink(img3);
-            // if (item.id === "4") setLink(img4);
-            // if (item.id === "5") setLink(img5);
-            // if (item.id === "6") setLink(img6);
-            // if (item.id === "7") setLink(img7);
 
             // if (item.id === selectedId) {
               switch (item.id) {
                 case "1":
                   setLink(img1);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "2":
                   setLink(img2);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "3":
                   setLink(img3);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "4":
                   setLink(img4);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "5":
                   setLink(img5);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "6":
                   setLink(img6);
-                  // setSelectedId(item.imgShoes);
                   break;
                 case "7":
                   setLink(img7);
-                  // setSelectedId(item.imgShoes);
                   break;
                 default:
                   break;
               }
-              navigation.navigate("ShoesDetails", { message: link });
             }
           // }
 
@@ -135,4 +128,17 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     backgroundColor: "#FFF9F9",
   },
+  btnOk: {
+    margin: 15,
+    alignSelf: "center",
+    backgroundColor: 'orange',
+    width: '50%',
+    height: 40,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
