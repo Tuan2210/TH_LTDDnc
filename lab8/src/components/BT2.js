@@ -9,38 +9,73 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const widthScreen = Dimensions.get('screen').width;
-const heightScreen = Dimensions.get("screen").height;
-console.log(widthScreen +',' +heightScreen);
+const widthScreen = Dimensions.get('window').width;
+const heightScreen = Dimensions.get("window").height;
+console.log('width: ' +widthScreen +', ' +'height: ' +heightScreen);
 
 export default function BT2() {
+  //move left - right
+  const leftValue = useState(new Animated.Value(0))[0];
+  // const rightValue = useState(new Animated.Value(widthScreen-120))[0];
+  function moveLeftRight() {
+    // if(leftValue) {
+      Animated.timing(leftValue, {
+        toValue: widthScreen - 120,
+        duration: 3000, //3s
+        useNativeDriver: false,
+      }).start();
+    // }
+    // if (rightValue) {
+    //   Animated.timing(rightValue, {
+    //     toValue: 0,
+    //     duration: 3000, //3s
+    //     useNativeDriver: false,
+    //   }).start();
+    // }
+  }
+
+  //move top - bottom
+  const topValue = useState(new Animated.Value(0))[0];
+  // const topValueBtn = useState(new Animated.Value(0))[0];
+   function moveTopBottom() {
+    //  if (topValue) {
+       Animated.timing(topValue, {
+         toValue: heightScreen - 240,
+         duration: 3500, //3s
+         useNativeDriver: false,
+       }).start();
+      //  Animated.timing(topValueBtn, {
+      //    toValue: -heightScreen,
+      //    duration: 3500,
+      //    useNativeDriver: false
+      //  })
+    //  }
+   }
 
   return (
-    <Animated.View style={styles.container}>
-      <Image
-        source={require("../../assets/flying-airplane.gif")}
-        style={{ height: 100, width: 100 }}
-      />
+    <View style={styles.container}>
+      <Animated.View style={[styles.viewPlane, { marginLeft: leftValue, marginTop: topValue }]}>
+        <Image
+          source={require("../../assets/flying-airplane.gif")}
+          style={{ height: 120, width: 120 }}
+        />
+      </Animated.View>
       <View style={styles.viewBtn}>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={moveTopBottom}>
           <Text style={styles.txt}>Top - Bottom</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={moveLeftRight}>
           <Text style={styles.txt}>Left - Right</Text>
         </TouchableOpacity>
       </View>
-    </Animated.View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
-    // marginLeft: 100,
-    // marginTop: 20,
     backgroundColor: "#fff",
-    // width: 200,
   },
   viewBtn: {
     justifyContent: "space-around",
@@ -58,10 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   viewPlane: {
-    // marginLeft: widthScreen-40,
-    marginLeft: 100,
-    marginTop: 20,
-    backgroundColor: "yellow",
-    width: 200,
+    width: 120,
+    height: 120,
   },
 });
