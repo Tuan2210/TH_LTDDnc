@@ -11,6 +11,7 @@ import BT1 from './src/components/BT1';
 import BT2 from "./src/components/BT2";
 import BT3 from './src/components/BT3';
 import BT4 from './src/components/BT4';
+import BT5 from './src/components/BT5';
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,11 @@ export default function App() {
           name="BT4"
           component={BT4}
           options={{ title: "Bài tập 4" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BT5"
+          component={BT5}
+          options={{ title: "Bài tập 5" }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
