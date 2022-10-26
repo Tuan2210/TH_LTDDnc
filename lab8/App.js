@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from './src/components/Home';
 import BT1 from './src/components/BT1';
 import BT2 from "./src/components/BT2";
+import BT3 from './src/components/BT3';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,11 @@ export default function App({navigation}) {
           name="BT2"
           component={BT2}
           options={{ title: "Bài tập 2" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BT3"
+          component={BT3}
+          options={{ title: "Bài tập 3" }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
