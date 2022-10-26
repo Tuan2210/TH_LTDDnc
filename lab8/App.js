@@ -10,10 +10,11 @@ import Home from './src/components/Home';
 import BT1 from './src/components/BT1';
 import BT2 from "./src/components/BT2";
 import BT3 from './src/components/BT3';
+import BT4 from './src/components/BT4';
 
 const Stack = createNativeStackNavigator();
 
-export default function App({navigation}) {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
@@ -36,6 +37,11 @@ export default function App({navigation}) {
           name="BT3"
           component={BT3}
           options={{ title: "Bài tập 3" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="BT4"
+          component={BT4}
+          options={{ title: "Bài tập 4" }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
