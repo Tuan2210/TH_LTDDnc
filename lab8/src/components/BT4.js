@@ -7,6 +7,7 @@ import React from "react";
 import Entypo from "@expo/vector-icons/Entypo"; //no use
 import * as Font from "expo-font"; //no use
 
+//link doc: https://docs.expo.dev/guides/splash-screens/
 //npm i expo-splash-screen
 import * as SplashScreen from "expo-splash-screen";
 
