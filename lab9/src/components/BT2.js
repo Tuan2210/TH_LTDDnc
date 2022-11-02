@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-  Dimensions
-} from "react-native";
+import { StyleSheet, View, Animated, Dimensions } from "react-native";
 import React, { useState } from "react";
 
 const widthScreen = Dimensions.get('window').width;
