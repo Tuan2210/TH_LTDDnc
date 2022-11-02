@@ -2,15 +2,6 @@ import { StyleSheet, View, Animated, Dimensions } from "react-native";
 import React, { useState } from "react";
 
 export default function BT1() {
-  // const fadeAnim = useRef(new Animated.Value(0)).current;
-  // const fadeIn = () => {
-  //   Animated.timing(fadeAnim, {
-  //     toValue: 1,
-  //     duration: 2000,
-  //     useNativeDriver: true,
-  //   }).start();
-  // };
-
   const widthScreen = Dimensions.get("window").width;
   const heightScreen = Dimensions.get("window").height;
   
@@ -91,8 +82,6 @@ export default function BT1() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-evenly",
-    alignItems: "center",
     backgroundColor: "#2C9ECC",
   },
   txtWelcome: {
