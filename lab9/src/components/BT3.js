@@ -1,62 +1,130 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-  TouchableOpacity,
-} from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, Animated } from "react-native";
+import React, { useState } from "react";
 
 export default function BT3() {
-    const startValue = new Animated.Value(-100);
-    const endValue = 150;
-    const duration = 5000;
+    const [location, setLocation] = useState({
+      marginLeft: new Animated.Value(10),
+      marginTop: new Animated.Value(10),
+    });
 
-    const movingObject = () => {
-      Animated.timing(startValue, {
-        toValue: endValue,
-        duration: duration,
-        useNativeDriver: true,
-      }).start();
-    };
+    let chieuCao1 = Math.floor(Math.random() * 700) + 1;
+    let chieuRong1 = Math.floor(Math.random() * 300) + 1;
+    let chieuCao2 = Math.floor(Math.random() * 700) + 1;
+    let chieuRong2 = Math.floor(Math.random() * 300) + 1;
+    let chieuCao3 = Math.floor(Math.random() * 700) + 1;
+    let chieuRong3 = Math.floor(Math.random() * 300) + 1;
 
-    const stopAnimation = () => {
-      Animated.timing(startValue, {
-        toValue: endValue,
-        duration: duration,
-        useNativeDriver: true,
-      }).stop();
-    };
+    const [locationMouse1, setLocationMouse1] = useState({
+      marginLeft1: new Animated.Value(chieuRong1),
+      marginTop1: new Animated.Value(chieuCao1),
+    });
+    const [locationMouse2, setLocationMouse2] = useState({
+      marginLeft2: new Animated.Value(chieuRong2),
+      marginTop2: new Animated.Value(chieuCao2),
+    });
+    const [locationMouse3, setLocationMouse3] = useState({
+      marginLeft3: new Animated.Value(chieuRong3),
+      marginTop3: new Animated.Value(chieuCao3),
+    });
 
-    const resetObject = () => {
-      Animated.timing(startValue, {
-        toValue: startValue,
-        duration: 0,
-        useNativeDriver: true,
-      }).start();
-    };
+    function onPress(evt) {
+      // console.log("====================================");
+      var x = evt.nativeEvent.locationX;
+      // console.log("====================================");
+      // console.log(x);
+      // console.log("====================================");
+      var y = evt.nativeEvent.locationY;
+      // console.log("====================================");
+      // console.log(y);
+      setLocation({
+        x: x,
+        y: y,
+        marginLeft: x - 30,
+        marginTop: y - 40,
+      });
+    }
 
-    const animStyle = {
-      transform: [
-        {
-          translateX: startValue,
-        },
-      ],
-    };
+    function onMove(evt) {
+      var x = evt.nativeEvent.locationX;
+
+      var y = evt.nativeEvent.locationY;
+      setLocation({ marginLeft: x - 30, marginTop: y - 40 });
+    }
+    function onRelease() {
+      // onMove(event)
+    }
+    const { marginTop, marginLeft } = location;
+    const { marginTop1, marginLeft1 } = locationMouse1;
+    const { marginTop2, marginLeft2 } = locationMouse2;
+    const { marginTop3, marginLeft3 } = locationMouse3;
 
     return (
-      <View style={styles.container}>
-        {/* <Animated.View style={[styles.circle, animStyle]} />
-        <TouchableOpacity style={styles.btnOptions} onPress={movingObject}>
-          <Text style={{ marginTop: "auto", marginBottom: "auto" }}>Start</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnOptions} onPress={stopAnimation}>
-          <Text style={{ marginTop: "auto", marginBottom: "auto" }}>Stop</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btnOptions} onPress={resetObject}>
-          <Text style={{ marginTop: "auto", marginBottom: "auto" }}>Reset</Text>
-        </TouchableOpacity> */}
-        <Text>bt3</Text>
+      <View
+        style={styles.container}
+        onStartShouldSetResponder={() => true}
+        onMoveShouldSetResponder={() => true}
+        onResponderGrant={onPress}
+        // onResponderMove={onMove}
+        onResponderRelease={onRelease}
+      >
+        {/* <Text>Show something!</Text> */}
+
+        <Animated.Image
+          source={require("../../assets/cat-moving.gif")}
+          style={[
+            { marginLeft: marginLeft, marginTop: marginTop },
+            styles.postion,
+          ]}
+          onStartShouldSetResponder={() => true}
+          onMoveShouldSetResponder={() => true}
+          onResponderGrant={onPress}
+          // onResponderMove={onMove}
+          onResponderRelease={onPress}
+        />
+
+        <Animated.Image
+          source={require("../../assets/rat-moving-1.gif")}
+          style={[
+            {
+              marginLeft: marginLeft1,
+              marginTop: marginTop1,
+              width: 200,
+              height: 80,
+            },
+            styles.postion,
+          ]}
+          onStartShouldSetResponder={() => true}
+          onMoveShouldSetResponder={() => true}
+          onResponderGrant={onPress}
+          onResponderMove={onMove}
+          onResponderRelease={onPress}
+        />
+
+        <Animated.Image
+          source={require("../../assets/rat-moving-1.gif")}
+          style={[
+            {
+              marginLeft: marginLeft2,
+              marginTop: marginTop2,
+              width: 200,
+              height: 80,
+            },
+            styles.postion,
+          ]}
+        />
+
+        <Animated.Image
+          source={require("../../assets/rat-moving-1.gif")}
+          style={[
+            {
+              marginLeft: marginLeft3,
+              marginTop: marginTop3,
+              width: 200,
+              height: 80,
+            },
+            styles.postion,
+          ]}
+        />
       </View>
     );
 }
@@ -64,22 +132,10 @@ export default function BT3() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#2C9ECC",
   },
-  circle: {
-    height: 50,
-    width: 50,
-    backgroundColor: "blue",
-    borderRadius: 50
-  },
-  btnOptions: {
-    width: 100,
-    height: 30,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginTop: 30,
-    alignItems: "center",
-    backgroundColor: "orange",
+  postion: {
+    position: "absolute",
+    // backgroundColor: "red",
   },
 });
