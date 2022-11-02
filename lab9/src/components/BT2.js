@@ -2,8 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TouchableOpacity,
   Animated,
   Dimensions
 } from "react-native";
@@ -68,7 +66,34 @@ export default function BT2() {
           <Text style={styles.txt}>Left - Right</Text>
         </TouchableOpacity>
       </View> */}
-      <Text>bt2</Text>
+      {/* <Text>bt2</Text> */}
+      <Animated.Image
+        source={require("../../assets/rat-moving-1.gif")}
+        style={{
+          width: 250,
+          height: 100,
+          marginLeft: 0,
+          marginTop: 0,
+        }}
+      />
+      <Animated.Image
+        source={require("../../assets/rat-moving-2.gif")}
+        style={{
+          width: 250,
+          height: 100,
+          marginLeft: 0,
+          marginTop: 0,
+        }}
+      />
+      <Animated.Image
+        source={require("../../assets/rat-moving-3.gif")}
+        style={{
+          width: 250,
+          height: 100,
+          marginLeft: 0,
+          marginTop: 0,
+        }}
+      />
     </View>
   );
 }
