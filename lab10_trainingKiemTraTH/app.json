@@ -18,16 +18,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "ios.bundleIdentifier",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "386792697540-bh5isencli2g6if1i0l2rdt2v0ppi60u.apps.googleusercontent.com"
+        }
+      },
+      "googleServicesFile": "./client_386792697540-bh5isencli2g6if1i0l2rdt2v0ppi60u.apps.googleusercontent.com.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "android.package",
+      "googleServicesFile": "./client_secret_386792697540-fmpdkor221bpi0r5p9t40mcnima5nv4o.apps.googleusercontent.com.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1a276ceb-2bd7-41f3-989a-3fab7441b1bf"
+      }
     }
   }
 }
