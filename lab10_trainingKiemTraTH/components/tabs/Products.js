@@ -5,6 +5,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import menuData from "../menuData";
 
+//link handle click filter buttons and render data item flatlist: 
+//https://stackoverflow.com/questions/68737291/react-native-filter-by-category-using-button-or-touchableopacity
+
 export default function Products() {
   ////////// flatList filter btn
   const dataFilter = [
