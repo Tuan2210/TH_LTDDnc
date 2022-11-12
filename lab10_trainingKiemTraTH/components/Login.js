@@ -13,7 +13,7 @@ import React, { useEffect } from "react";
 // import * as GoogleSignIn from "expo-google-sign-in";
 // import * as Google from "expo-auth-session/providers/google";
 
-export default function Onboarding({ navigation }) {
+export default function Login({ navigation }) {
   // const handleGoogleLogin = () => {
   //   const config = {
   //     iosClientId: `386792697540-bh5isencli2g6if1i0l2rdt2v0ppi60u.apps.googleusercontent.com`,
@@ -92,7 +92,8 @@ export default function Onboarding({ navigation }) {
         </Text>
         <TouchableOpacity style={styles.btnLogin} onPress={() => navigation.navigate('Home')}>
           <Image source={require("../assets/imgGoogle.png")} />
-          <Text style={{marginLeft: '3%', fontWeight: "bold", fontSize: 18}}>LOGIN WITH GOOGLE</Text>
+          {/* <Text style={{marginLeft: '3%', fontWeight: "bold", fontSize: 18}}>LOGIN WITH GOOGLE</Text> */}
+          <Text style={{marginLeft: '3%', fontWeight: "bold", fontSize: 18}}>GET STARTED</Text>
         </TouchableOpacity>
       </View>
     </View>

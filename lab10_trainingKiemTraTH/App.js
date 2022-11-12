@@ -26,6 +26,7 @@ export default function App() {
           name="Home"
           component={Home}
           options={{ title: "Trang chủ" }}
+          // options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
