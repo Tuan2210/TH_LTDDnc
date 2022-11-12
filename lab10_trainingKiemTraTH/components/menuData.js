@@ -1,4 +1,4 @@
-const data = [
+const menuData = [
   {
     id: 1,
     title: "Milk",
@@ -72,4 +72,4 @@ const data = [
     url: require("../assets/images_prd/tramangcau.png"),
   },
 ];
-export default data;
+export default menuData;
