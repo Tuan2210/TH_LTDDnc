@@ -19,13 +19,13 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ title: "Đăng nhập" }}
+          options={{ title: "Login" }}
           // options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Trang chủ" }}
+          options={{ title: "Welcome" }}
           // options={{ headerShown: false }}
         />
       </Stack.Navigator>
