@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import FoundationIcon from "react-native-vector-icons/Foundation";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FeatherIcon from "react-native-vector-icons/Feather";
 
 //link doc top tabs: https://reactnavigation.org/docs/material-top-tab-navigator/
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -37,9 +38,9 @@ export default function Home({ navigation }) {
         tabBarPosition="bottom"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconNameFoundation1, iconNameIcon, iconNameFoundation2;
+            let iconNameFoundation, iconNameIcon, iconNameFeather;
             if (route.name === "products") {
-              iconNameFoundation1 = "home";
+              iconNameFoundation = "home";
               size = focused ? 30 : 25;
               color = focused ? "#D4A055" : "#fff";
             } else if (route.name === "love_products") {
@@ -47,7 +48,7 @@ export default function Home({ navigation }) {
               size = focused ? 30 : 25;
               color = focused ? "#D4A055" : "#fff";
             } else if (route.name === "order") {
-              iconNameFoundation2 = "shopping-bag";
+              iconNameFeather = "shopping-bag";
               size = focused ? 30 : 25;
               color = focused ? "#D4A055" : "#fff";
             }
@@ -59,17 +60,17 @@ export default function Home({ navigation }) {
                   // width: "130%",
                   justifyContent: "center",
                   marginLeft: "-12%",
-                  marginTop:'-15%'
+                  marginTop:'-20%'
                 }}
               >
                 <FoundationIcon
-                  name={iconNameFoundation1}
+                  name={iconNameFoundation}
                   size={size}
                   color={color}
                 />
                 <Ionicons name={iconNameIcon} size={size} color={color} />
-                <FoundationIcon
-                  name={iconNameFoundation2}
+                <FeatherIcon
+                  name={iconNameFeather}
                   size={size}
                   color={color}
                 />
