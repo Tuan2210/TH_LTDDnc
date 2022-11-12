@@ -71,5 +71,21 @@ const menuData = [
     start: 5,
     url: require("../assets/images_prd/tramangcau.png"),
   },
+  {
+    id: 10,
+    title: "Milk",
+    name: "Phuc Long Milk Tea",
+    price: "35.000 đ",
+    start: 5,
+    url: require("../assets/images_prd/caphesua.png"),
+  },
+  {
+    id: 11,
+    title: "Milk",
+    name: "Phuc Long Milk Tea Special",
+    price: "69.000 đ",
+    start: 5,
+    url: require("../assets/images_prd/caphesua.png"),
+  },
 ];
 export default menuData;
