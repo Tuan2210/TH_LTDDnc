@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import data from '../data';
+
 export default function Products() {
   // flatList filter btn
   const dataFilter = [
@@ -24,6 +26,8 @@ export default function Products() {
     },
   ];
   const [selectedIdCenter, setselectedIdCenter] = useState(null);
+  const [selectedIdBottom, setSelectedIdBottom] = useState(null);
+
   const ItemCenter = ({ item, onPress, backgroundColor, textColor }) => (
     <TouchableOpacity
       onPress={onPress}
@@ -46,6 +50,37 @@ export default function Products() {
     );
   };
 
+  const renderItemsPrd = ({ item }) => {
+    const Item = ({ item, onPress }) => (
+      <TouchableOpacity
+        style={[styles.item, styles.flex_center_row]}
+        onPress={onPress}
+      >
+        <Image style={styles.flatList_img} source={{ uri: item.url }} />
+        <View style={[styles.item_about]}>
+          <Text style={[styles.title, { height: "40%", width: "90%" }]}>
+            {item.name}
+          </Text>
+          <Text
+            style={[styles.title_discrible, { height: "35%", width: "90%" }]}
+          >
+            Công ty Cổ Phần Phúc Long Heritage
+          </Text>
+          <View
+            style={[styles.item_about__bottom, { height: "25%", width: "90%" }]}
+          >
+            <Text style={styles.price}>{item.price}</Text>
+            <TouchableOpacity style={styles.btn_content}>
+              <Text style={styles.btn_content_text}>Add to cart</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+
+    return <Item item={item} onPress={() => setselectedIdCenter(item.id)} />;
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerBottom}>
@@ -62,6 +97,26 @@ export default function Products() {
             horizontal
           />
         </View>
+        {/* <View style={[styles.flex_center_row]}>
+          <FlatList
+            data={data}
+            renderItem={renderItemsPrd}
+            horizontal
+            // showsHorizontalScrollIndicator={false}
+            // pagingEnabled
+            // bounces={false}
+            keyExtractor={(item) => item.id}
+            // scrollEventThrottle={32}
+          />
+        </View> */}
+        {/* <View style={[styles.flatList_bottom, styles.flex_center_row]}>
+          <FlatList
+            data={data}
+            renderItem={renderItemBottom}
+            numColumns={2}
+            keyExtractor={(item) => item.id}
+          />
+        </View> */}
       </View>
     </SafeAreaView>
   );
@@ -77,6 +132,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+
+  //filters
   flatListBtn: {
     // backgroundColor: "orange",
     alignItems: "center",
@@ -99,5 +156,65 @@ const styles = StyleSheet.create({
   },
   title_item_center: {
     textAlign: "center",
+  },
+
+  //items
+  flex_center_row: {
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  // FlatList: {
+  //   marginVertical: 20,
+  //   width: 360,
+  //   height: "20%",
+  // },
+  flatList_img: {
+    height: 150,
+    width: 135,
+    resizeMode: "contain",
+  },
+  item_about: {
+    width: 220,
+    height: "80%",
+    alignItems: "flex-start",
+    justifyContent: "space-around",
+    flexDirection: "column",
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#fff",
+  },
+  title_discrible: {
+    fontSize: 14,
+    color: "#fff",
+  },
+  item_about__bottom: {
+    with: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+  },
+  price: {
+    fontSize: 22,
+    textDecorationStyle: "solid",
+    color: "yellow",
+  },
+  btn_content: {
+    width: 100,
+    height: 35,
+    paddingVertical: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#808000",
+    borderWidth: 2,
+    // borderRadius: "10%",
+    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 10,
+    backgroundColor: "#808000",
+  },
+  btn_content_text: {
+    textTransform: "uppercase",
+    color: "#fff",
   },
 });
