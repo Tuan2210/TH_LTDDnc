@@ -28,7 +28,7 @@ const Tab = createMaterialTopTabNavigator();
 const widthScreen = Dimensions.get("window").width;
 const heightScreen = Dimensions.get("window").height;
 
-export default function Home({ navigation }) {
+export default function Home() {
   return (
     <>
       {/* Vì App.js đã có NavigationContainer */}
