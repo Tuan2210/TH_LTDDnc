@@ -56,10 +56,10 @@ export default function Products() {
   ////////// flatlist render item data
   const [fullFilterList, setFullFilterList] = useState(menuData);
 
+  const [titleFilter, setTitleFilter] = useState("");
   function getTitleFilter(filter) {
     setTitleFilter(filter);
   };
-  const [titleFilter, setTitleFilter] = useState("");
 
   const handleFilterList = useMemo(() => {
     if (titleFilter === "Hot Coffee")
@@ -84,7 +84,7 @@ export default function Products() {
           height: 220,
           justifyContent: "center",
           marginLeft: "3%",
-          marginTop: '4%',
+          marginTop: "4%",
           borderRadius: 20,
           borderColor: "black",
           borderWidth: 1,
@@ -97,9 +97,24 @@ export default function Products() {
         style={{ width: "auto", height: 100 }}
         resizeMode="contain"
       />
-      <View style={{marginBottom: '-10%', marginTop: 20, marginLeft: 10}}>
+      <View style={{ marginBottom: "-10%", marginTop: 20, marginLeft: 10 }}>
         <Text style={[activeItemFont, { fontSize: 18 }]}>{item.name}</Text>
-        <Text style={{ color: "#D4A055", fontSize: 25, fontWeight: 'bold' }}>{item.price}</Text>
+        <View style={{ flexDirection: "row" }}>
+          <Text style={{ color: "#D4A055", fontSize: 25, fontWeight: "bold", marginRight: '30%' }}>
+            {item.price}
+          </Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: "#D4A055",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 10,
+              borderRadius: 10
+            }}
+          >
+            <Text style={{fontWeight: "bold"}}>ADD</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );

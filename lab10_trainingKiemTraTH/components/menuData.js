@@ -87,5 +87,13 @@ const menuData = [
     start: 5,
     url: require("../assets/images_prd/caphesua.png"),
   },
+  {
+    id: 12,
+    title: "Hot Teas",
+    name: "Hot Tea VN",
+    price: "33.000 đ",
+    start: 5,
+    url: require("../assets/images_prd/tradau.png"),
+  },
 ];
 export default menuData;
