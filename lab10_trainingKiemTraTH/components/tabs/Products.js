@@ -139,7 +139,7 @@ function Products() {
     })
     if(!flag) listOrder.push({...itemAdd, quantity: 1});
 
-    // console.warn('Đã thêm', listOrder);
+    console.warn('Đã thêm', listOrder);
   }
 
   return (

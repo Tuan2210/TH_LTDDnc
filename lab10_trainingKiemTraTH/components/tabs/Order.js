@@ -22,7 +22,7 @@ export default function Order() {
   useEffect(() => {
     console.warn(listOrder);
     // if(listOrder === null)
-    //   setListCart(listOrder);
+      setListCart(listOrder);
     // else setListCart(null);
   }, [listCart]);
 
