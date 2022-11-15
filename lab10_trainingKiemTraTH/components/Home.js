@@ -19,7 +19,7 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 
-import Products from "./tabs/Products";
+import {Products} from "./tabs/Products";
 import LoveProducts from "./tabs/LoveProducts";
 import Order from "./tabs/Order";
 

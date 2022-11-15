@@ -8,7 +8,8 @@ import menuData from "../menuData";
 //link handle click filter buttons and render data item flatlist: 
 //https://stackoverflow.com/questions/68737291/react-native-filter-by-category-using-button-or-touchableopacity
 
-export default function Products() {
+let listOrder = [];
+function Products() {
   ////////// flatList filter btn
   const dataFilter = [
     {
@@ -111,6 +112,7 @@ export default function Products() {
               padding: 10,
               borderRadius: 10
             }}
+            onPress={() => handlekAddCart(item)}
           >
             <Text style={{fontWeight: "bold"}}>ADD</Text>
           </TouchableOpacity>
@@ -119,6 +121,26 @@ export default function Products() {
     </TouchableOpacity>
   );
   //////////
+
+  //////////handle add to cart
+  // const list = navigation.getParams('list');
+  function handlekAddCart(itemAdd) {
+    // const itemcart = {
+    //   product: data,
+    //   quantity: 1,
+    //   price: data.price,
+    // };
+    let flag = false;
+    listOrder.map((itemOrder) => {
+      if(itemOrder.id === itemAdd.id) {
+        itemOrder.quantity = itemOrder.quantity+1;
+        flag=true;
+      }
+    })
+    if(!flag) listOrder.push({...itemAdd, quantity: 1});
+
+    // console.warn('Đã thêm', listOrder);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -167,6 +189,8 @@ export default function Products() {
     </SafeAreaView>
   );
 }
+
+export {Products, listOrder};
 
 const styles = StyleSheet.create({
   container: {
