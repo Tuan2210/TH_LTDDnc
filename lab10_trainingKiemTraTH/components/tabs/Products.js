@@ -102,7 +102,7 @@ function Products() {
         <Text style={[activeItemFont, { fontSize: 18 }]}>{item.name}</Text>
         <View style={{ flexDirection: "row" }}>
           <Text style={{ color: "#D4A055", fontSize: 25, fontWeight: "bold", marginRight: '30%' }}>
-            {item.price}
+            {item.price} đ
           </Text>
           <TouchableOpacity
             style={{
@@ -134,12 +134,14 @@ function Products() {
     listOrder.map((itemOrder) => {
       if(itemOrder.id === itemAdd.id) {
         itemOrder.quantity = itemOrder.quantity+1;
+        itemOrder.price = itemAdd.price * itemOrder.quantity;
         flag=true;
       }
     })
     if(!flag) listOrder.push({...itemAdd, quantity: 1});
 
-    console.warn('Đã thêm', listOrder);
+    console.log('Đã thêm', listOrder);
+    Alert.alert('Đã thêm');
   }
 
   return (

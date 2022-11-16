@@ -20,13 +20,34 @@ export default function Order() {
 
   const route = useRoute();
   useEffect(() => {
-    console.warn(listOrder);
+    // console.log(listOrder);
     // if(listOrder === null)
       setListCart(listOrder);
     // else setListCart(null);
+    console.log('list cart: ', listCart);
   }, [listCart]);
 
+  function handleBonus(quantity) {
+    if (quantity > 0) {
+      quantity++;
+      // setQuantityItem(quantity)
+      console.log(quantity);
+      Alert.alert("Số lượng: " + quantity);
+      return quantity;
+    }
+  }
+  function handleMinus(quantity) {
+    if (quantity === 0) quantity === 0;
+    else quantity--;
+    // setQuantityItem(quantity);
+    Alert.alert("Số lượng: " + quantity);
+    console.log(quantity);
+    return quantity;
+  } 
+
   const Item = ({ item, index }) => {
+    // const [quantityItem, setQuantityItem] = useState('item.quantity');
+
     return (
       <View
         style={{
@@ -59,14 +80,14 @@ export default function Order() {
         >
           <TouchableOpacity
             style={{ backgroundColor: "#F8E7D7", padding: 8, borderRadius: 50, alignItems: "center" }}
-            // onPress={() => handleCountTop(item)}
+            onPress={() => handleBonus(item.quantity)}
           >
             <Text>+</Text>
           </TouchableOpacity>
           <Text style={{fontSize: 20, padding: 5}}>{item.quantity}</Text>
           <TouchableOpacity
             style={{ backgroundColor: "#F8E7D7", padding: 8, borderRadius: 50, alignItems: "center" }}
-            // onPress={handleCountDown(item)}
+            onPress={() => handleMinus(item.quantity)}
           >
             <Text>-</Text>
           </TouchableOpacity>
