@@ -11,6 +11,7 @@ import React from "react";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
+//link all icons react-native: https://oblador.github.io/react-native-vector-icons/
 import FoundationIcon from "react-native-vector-icons/Foundation";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FeatherIcon from "react-native-vector-icons/Feather";
