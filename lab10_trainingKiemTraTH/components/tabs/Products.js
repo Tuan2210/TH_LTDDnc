@@ -125,11 +125,6 @@ function Products() {
   //////////handle add to cart
   // const list = navigation.getParams('list');
   function handlekAddCart(itemAdd) {
-    // const itemcart = {
-    //   product: data,
-    //   quantity: 1,
-    //   price: data.price,
-    // };
     let flag = false;
     listOrder.map((itemOrder) => {
       if(itemOrder.id === itemAdd.id) {

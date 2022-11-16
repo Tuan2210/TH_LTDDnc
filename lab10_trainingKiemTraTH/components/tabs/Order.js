@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ImageBackground,
   Image,
   Alert,
   FlatList
@@ -18,7 +17,7 @@ import { listOrder } from "./Products";
 export default function Order() {
   const [listCart, setListCart] = useState([]);
 
-  const route = useRoute();
+  // const route = useRoute();
   useEffect(() => {
     // console.log(listOrder);
     // if(listOrder === null)
