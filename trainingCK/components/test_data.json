@@ -1,0 +1,14 @@
+{
+  "Cà phê sữa": {
+    "id1": {
+      "name": "Cà phê sữa đá",
+      "price": 50000,
+      "url": "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/trainingCK/assets/caphesua/caphesuada.png"
+    },
+    "id2": {
+      "name": "Cà phê sữa nóng",
+      "price": 49000,
+      "url": "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/trainingCK/assets/caphesua/caphesuanong.png"
+    }
+  }
+}

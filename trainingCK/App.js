@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React from "react";
 
-//npm i @react-navigation/native @react-navigation/native-stack
+//npm i @react-navigation/native @react-navigation/native-stack axios firebase react-native-safe-area-context
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
