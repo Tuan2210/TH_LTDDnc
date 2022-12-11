@@ -1,7 +1,7 @@
 import axios from "axios";
 export default axios.create({
   baseURL:
-    "https://trainingck-reactnative-52ba4-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    "https://trainingck-reactnative-52ba4-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 
 // // Import the functions you need from the SDKs you need

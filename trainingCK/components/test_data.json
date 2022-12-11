@@ -1,14 +1,33 @@
 {
-  "Cà phê sữa": {
-    "id1": {
+  "Sản phẩm": [
+    {
+      "id": "1",
+      "title": "Cà phê sữa",
       "name": "Cà phê sữa đá",
       "price": 50000,
-      "url": "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/trainingCK/assets/caphesua/caphesuada.png"
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670760056/image_trainingCK_react-native/caphesuada_uf8k63.png"
     },
-    "id2": {
+    {
+      "id": "2",
+      "title": "Cappuccino",
+      "name": "Cappuccino thường",
+      "price": 52000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670760095/image_trainingCK_react-native/cappuccino_uvofmd.png"
+    },
+    {
+      "id": "3",
+      "title": "Cà phê sữa",
       "name": "Cà phê sữa nóng",
       "price": 49000,
-      "url": "https://raw.githubusercontent.com/Tuan2210/TH_LTDDnc/master/trainingCK/assets/caphesua/caphesuanong.png"
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670760056/image_trainingCK_react-native/caphesuanong_tksrcj.png"
+    },
+    {
+      "id": "4",
+      "title": "Cappuccino",
+      "name": "Cappuccino Chocolate",
+      "price": 49000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670760095/image_trainingCK_react-native/cappuccino-chocolate_tzymwh.png"
     }
-  }
+  ],
+  "Giỏ hàng": {}
 }

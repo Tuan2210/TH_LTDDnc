@@ -36,7 +36,6 @@ export default function Home() {
     },
   ];
   const [selectedIdCenter, setselectedIdCenter] = useState(null);
-  const [selectedIdBottom, setSelectedIdBottom] = useState(null);
   const ItemCenter = ({ item, onPress, backgroundColor, textColor }) => (
     <TouchableOpacity
       onPress={onPress}
@@ -65,23 +64,34 @@ export default function Home() {
   //////////
 
   ////////// flatlist render item data
-  const [fullFilterList, setFullFilterList] = useState(axiosConfig.get('/'));
+  const [fullFilterList, setFullFilterList] = useState([]);
+  useEffect(() => { // ok
+    axiosConfig.get("/Sản phẩm.json").then((response) => {
+      // console.log(response);
+      // const getData = [];
+      for (let key in response.data) {
+        fullFilterList.push({ ...response.data[key], id: key });
+      }
+      console.log(fullFilterList);
+      // console.log(response.data);
+    });
+  });
 
   const [titleFilter, setTitleFilter] = useState("");
   function getTitleFilter(filter) {
     setTitleFilter(filter);
   }
 
-  // const handleFilterList = useMemo(() => {
-  //   if (titleFilter === "Cà phê sữa")
-  //     return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
+  const handleFilterList = useMemo(() => {
+    if (titleFilter === "Cà phê sữa")
+      return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
   //   // if (titleFilter === "Tea")
   //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
   //   // if (titleFilter === "Milk")
   //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
   //   // if (titleFilter === "Hot Teas")
   //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
-  // }, [titleFilter, fullFilterList]);
+  }, [titleFilter, fullFilterList]);
 
   const [selectedIdItemData, setSelectedIdItemData] = useState(null);
 
@@ -139,18 +149,6 @@ export default function Home() {
   );
   //////////
 
-  useEffect(() => { // ok
-    axiosConfig.get("Cà phê sữa.json").then((response) => {
-      // console.log(response);
-      const getData = [];
-      for (let key in response.data) {
-        getData.push({ ...response.data[key], id: key });
-      }
-      // console.log(getData);
-      console.log(response.data);
-    });
-  });
-
   return (
     <SafeAreaView style={styles.container}>
       <Image
@@ -170,12 +168,12 @@ export default function Home() {
       </View>
 
       {/* list items filter */}
-      {/* <View style={{ flex: 1, alignItems: "center", marginTop: "3%" }}>
+      <View style={{ flex: 1, alignItems: "center", marginTop: "3%" }}>
         <FlatList
           key={"#"}
           numColumns={2} // => bắt buộc key={'#'}
           data={handleFilterList}
-          // keyExtractor={(item) => item.id}
+          keyExtractor={(item) => `key-${item.id}`}
           renderItem={({ item }) => {
             const backgroundColor =
               item.id === selectedIdItemData ? "#fff" : "black";
@@ -191,7 +189,7 @@ export default function Home() {
             );
           }}
         />
-      </View> */}
+      </View>
     </SafeAreaView>
   );
 }
