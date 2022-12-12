@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 // import { useRoute } from "@react-navigation/native";
 
-export default function Order() {
+export default function Cart() {
   return (
     <SafeAreaView style={styles.container}>
       <Text>List orders</Text>

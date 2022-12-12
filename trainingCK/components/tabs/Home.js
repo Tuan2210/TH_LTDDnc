@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { FlatList, StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";
-import React, {useEffect, useMemo, useState} from "react";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  Image,
+  View,
+} from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
 
 //link yt: https://www.youtube.com/watch?v=qOsrF_ap0JU
 //link cloudinary: https://cloudinary.com/console/c-ef0cae7b17c811a6a63fd33e335ac0/media_library/folders/c280876d780978ba2f62aef78c1c49c148
@@ -13,7 +20,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // import { realtimeDBFireBase } from "./config";
-import axiosConfig from "./axiosConfig";
+import axiosConfig from "../axiosConfig";
 
 export default function Home() {
   ////////// flatList filter btn
@@ -69,7 +76,8 @@ export default function Home() {
 
   ////////// flatlist render item data
   const [fullFilterList, setFullFilterList] = useState([{}]);
-  useEffect(() => { // ok
+  useEffect(() => {
+    // ok
     axiosConfig.get("/Sản phẩm.json").then((response) => {
       // console.log(response.data);
       // const getData = [];
@@ -103,8 +111,8 @@ export default function Home() {
 
     if (titleFilter === "Cà phê sữa")
       return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
-      // {filtered.map(titleFilter => {return fullFilterList})}
-      // return fullFilterList.filter(item => item.title === titleFilter)[0];
+    // {filtered.map(titleFilter => {return fullFilterList})}
+    // return fullFilterList.filter(item => item.title === titleFilter)[0];
     if (titleFilter === "Cappuccino")
       return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
     if (titleFilter === "Cà phê phin")
@@ -136,7 +144,7 @@ export default function Home() {
       ]}
     >
       <Image
-        source={{uri: item.url}}
+        source={{ uri: item.url }}
         style={{ width: "auto", height: 100 }}
         resizeMode="contain"
       />
@@ -174,7 +182,7 @@ export default function Home() {
   return (
     <SafeAreaView style={styles.container}>
       <Image
-        source={require("../assets/imgPromo.png")}
+        source={require("../../assets/imgPromo.png")}
         style={{ alignSelf: "center" }}
       />
 
@@ -190,7 +198,14 @@ export default function Home() {
       </View>
 
       {/* list items filter */}
-      <View style={{ height: '65%', alignItems: "center", marginTop: "3%", backgroundColor: 'yellow' }}>
+      <View
+        style={{
+          height: "65%",
+          alignItems: "center",
+          marginTop: "3%",
+          backgroundColor: "yellow",
+        }}
+      >
         <FlatList
           key={"#"}
           numColumns={2} // => bắt buộc key={'#'}
@@ -244,9 +259,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: "3%",
     borderStyle: "solid",
-    borderColor: 'orange',
+    borderColor: "orange",
     borderWidth: 1,
-    width: '95%',
+    width: "95%",
     // height: '55%'
   },
 });
