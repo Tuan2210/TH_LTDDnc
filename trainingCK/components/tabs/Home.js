@@ -161,7 +161,7 @@ export default function Home() {
           >
             {item.price} đ
           </Text>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={{
               backgroundColor: "#D4A055",
               alignItems: "center",
@@ -172,7 +172,7 @@ export default function Home() {
             // onPress={() => handlekAddCart(item)}
           >
             <Text style={{ fontWeight: "bold" }}>ADD</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableOpacity>
@@ -197,7 +197,7 @@ export default function Home() {
         />
       </View>
 
-      {/* list items filter */}
+      {/* list items after filtered */}
       <View
         style={{
           height: "65%",
@@ -210,7 +210,8 @@ export default function Home() {
           key={"#"}
           numColumns={2} // => bắt buộc key={'#'}
           data={handleFilterList}
-          keyExtractor={(item) => item.id}
+          // keyExtractor={(item) => item.id} //nào cũng đc
+          keyExtractor={(item) => `key-${item.id}`}
           renderItem={({ item }) => {
             const backgroundColor =
               item.id === selectedIdItemData ? "#fff" : "black";
