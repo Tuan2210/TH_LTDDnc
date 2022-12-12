@@ -109,10 +109,15 @@ export default function Home() {
     //                                  .catch(console.error);
     // const filtered = fullFilterList.filter(item => item.title === titleFilter);
 
-    if (titleFilter === "Cà phê sữa")
-      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+    let listFiltered = null;
+    if (titleFilter === "Cà phê sữa") {
+      listFiltered = fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+      console.log('List cà phê sữa:');
+      console.log(listFiltered);
+      return listFiltered;  
     // {filtered.map(titleFilter => {return fullFilterList})}
     // return fullFilterList.filter(item => item.title === titleFilter)[0];
+    }
     if (titleFilter === "Cappuccino")
       return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
     if (titleFilter === "Cà phê phin")
@@ -177,6 +182,12 @@ export default function Home() {
       </View>
     </TouchableOpacity>
   );
+  //////////
+
+  ////////// hande add to cart
+  const handleAddToCart = () => {
+    
+  }
   //////////
 
   return (
