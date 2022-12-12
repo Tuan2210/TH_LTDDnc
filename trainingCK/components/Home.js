@@ -2,6 +2,10 @@ import { StatusBar } from "expo-status-bar";
 import { FlatList, StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";
 import React, {useEffect, useMemo, useState} from "react";
 
+//link yt: https://www.youtube.com/watch?v=qOsrF_ap0JU
+//link cloudinary: https://cloudinary.com/console/c-ef0cae7b17c811a6a63fd33e335ac0/media_library/folders/c280876d780978ba2f62aef78c1c49c148
+//link realtimeDB firebase: https://console.firebase.google.com/u/0/project/trainingck-reactnative-52ba4/database/trainingck-reactnative-52ba4-default-rtdb/data
+
 //npm i @react-navigation/native @react-navigation/native-stack
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -64,16 +68,17 @@ export default function Home() {
   //////////
 
   ////////// flatlist render item data
-  const [fullFilterList, setFullFilterList] = useState([]);
+  const [fullFilterList, setFullFilterList] = useState([{}]);
   useEffect(() => { // ok
     axiosConfig.get("/Sản phẩm.json").then((response) => {
-      // console.log(response);
+      // console.log(response.data);
       // const getData = [];
       for (let key in response.data) {
         fullFilterList.push({ ...response.data[key], id: key });
       }
-      console.log(fullFilterList);
-      // console.log(response.data);
+      // fullFilterList.push({ ...response.data });
+      // console.log(fullFilterList);
+      // console.log(getData);
     });
   });
 
@@ -83,14 +88,31 @@ export default function Home() {
   }
 
   const handleFilterList = useMemo(() => {
+    //   // response.data.forEach(req => {
+    //   //   if(req.title === "Cà phê sữa")
+    //   //     for (let key in response.data) {
+    //   //       fullFilterList.push({...req[key], id: key});
+    //   //     }
+    //   // })
+    // });
+
+    // axiosConfig.get("/Sản phẩm.json").then(response => response.data)
+    //                                  .then(resData => setFullFilterList(resData))
+    //                                  .catch(console.error);
+    // const filtered = fullFilterList.filter(item => item.title === titleFilter);
+
     if (titleFilter === "Cà phê sữa")
-      return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
-  //   // if (titleFilter === "Tea")
-  //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
-  //   // if (titleFilter === "Milk")
-  //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
-  //   // if (titleFilter === "Hot Teas")
-  //   //   return fullFilterList.filter((item) => titleFilter === item.title); //title in menuData
+      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+      // {filtered.map(titleFilter => {return fullFilterList})}
+      // return fullFilterList.filter(item => item.title === titleFilter)[0];
+    if (titleFilter === "Cappuccino")
+      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+    if (titleFilter === "Cà phê phin")
+      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+    if (titleFilter === "Espresso")
+      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
+    if (titleFilter === "Bạc xỉu")
+      return fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
   }, [titleFilter, fullFilterList]);
 
   const [selectedIdItemData, setSelectedIdItemData] = useState(null);
@@ -114,7 +136,7 @@ export default function Home() {
       ]}
     >
       <Image
-        source={item.url}
+        source={{uri: item.url}}
         style={{ width: "auto", height: 100 }}
         resizeMode="contain"
       />
@@ -153,7 +175,7 @@ export default function Home() {
     <SafeAreaView style={styles.container}>
       <Image
         source={require("../assets/imgPromo.png")}
-        style={{ alignSelf: "center", marginTop: "35%" }}
+        style={{ alignSelf: "center" }}
       />
 
       {/* flatlist buttons filter */}
@@ -168,12 +190,12 @@ export default function Home() {
       </View>
 
       {/* list items filter */}
-      <View style={{ flex: 1, alignItems: "center", marginTop: "3%" }}>
+      <View style={{ height: '65%', alignItems: "center", marginTop: "3%", backgroundColor: 'yellow' }}>
         <FlatList
           key={"#"}
           numColumns={2} // => bắt buộc key={'#'}
           data={handleFilterList}
-          keyExtractor={(item) => `key-${item.id}`}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             const backgroundColor =
               item.id === selectedIdItemData ? "#fff" : "black";
@@ -199,7 +221,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   item_center: {
     width: 100,
@@ -221,5 +243,10 @@ const styles = StyleSheet.create({
     // backgroundColor: "orange",
     alignItems: "center",
     marginTop: "3%",
+    borderStyle: "solid",
+    borderColor: 'orange',
+    borderWidth: 1,
+    width: '95%',
+    // height: '55%'
   },
 });

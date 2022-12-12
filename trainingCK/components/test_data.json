@@ -25,8 +25,50 @@
       "id": "4",
       "title": "Cappuccino",
       "name": "Cappuccino Chocolate",
-      "price": 49000,
+      "price": 60000,
       "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670760095/image_trainingCK_react-native/cappuccino-chocolate_tzymwh.png"
+    },
+    {
+      "id": "5",
+      "title": "Cà phê phin",
+      "name": "Cà phê phin thường",
+      "price": 30000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670819851/image_trainingCK_react-native/caphephin_s7jnki.png"
+    },
+    {
+      "id": "6",
+      "title": "Espresso",
+      "name": "Espresso nóng",
+      "price": 47000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670820202/image_trainingCK_react-native/espressonong_s87ocn.png"
+    },
+    {
+      "id": "7",
+      "title": "Bạc xỉu",
+      "name": "Bạc xỉu đá",
+      "price": 53000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670820440/image_trainingCK_react-native/bacxiuda_rybksz.png"
+    },
+    {
+      "id": "8",
+      "title": "Espresso",
+      "name": "Espresso đá",
+      "price": 44000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670820202/image_trainingCK_react-native/expressoda_chyq5c.png"
+    },
+    {
+      "id": "9",
+      "title": "Bạc xỉu",
+      "name": "Bạc xỉu kem xốp",
+      "price": 69000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670820440/image_trainingCK_react-native/bacxiukemxop_srxlec.png"
+    },
+    {
+      "id": "10",
+      "title": "Cà phê phin",
+      "name": "Cà phê phin sữa 2 tầng",
+      "price": 35000,
+      "url": "https://res.cloudinary.com/dpyhpvmoz/image/upload/v1670819852/image_trainingCK_react-native/caphephin2tang_jzrlbj.png"
     }
   ],
   "Giỏ hàng": {}
