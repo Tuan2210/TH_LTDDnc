@@ -17,22 +17,27 @@ import { listOrders } from "./Home";
 import axiosConfig from "../axiosConfig";
 
 export default function Cart() {
-  const [fullOrderList, setFullOrderList] = useState([{}]);
+  // const [fullOrderList, setFullOrderList] = useState([{}]);
+  let fullOrderList = [];
+  let objUrl, objName, objPrice, objQuantity, objTitle;
+  const [flag, setFlag] = useState(false);
   useEffect(() => {
     axiosConfig.get("/Giỏ hàng.json").then((response) => {
       // console.log(response.data);
       // const getData = [];
       for (let key in response.data) {
-        fullOrderList.push({ ...response.data[key], id: key });
+        fullOrderList.push({ ...response.data[key]});
       }
       // fullFilterList.push({ ...response.data });
+      if(fullOrderList!==null) setFlag(true);
+      console.log('full order-list:')
       console.log(fullOrderList);
       // console.log(getData);
     });
   });
   const ItemOrder = ({item, index}) => {
     return (
-      <View
+      <TouchableOpacity
         style={{
           backgroundColor: "#F8E7D7",
           flexDirection: "row",
@@ -42,26 +47,39 @@ export default function Cart() {
       >
         <View style={{ backgroundColor: "black", width: 120, padding: 10 }}>
           <Image
-            style={{ width: "auto", height: "100%" }}
-            source={item.url}
+            style={{ width: "auto", height: 120 }}
+            source={{uri: item.key.url}}
             resizeMode="contain"
           />
         </View>
         <View>
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.name}</Text>
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.price}</Text>
-          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.quantity}</Text>
-          <Text style={{fontSize: 18, fontWeight: "bold"}}>Loại: {item.title}</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.key.name}</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.key.price} đ</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>{item.key.quantity}</Text>
+          <Text style={{fontSize: 18, fontWeight: "bold"}}>Loại: {item.key.title}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.viewProductList}>
-        <Text>List orders</Text>
-      </ScrollView>
+      <View style={styles.viewProductList}>
+        {/* <Text>List orders</Text> */}
+        <FlatList
+          // style={{display: !flag ? "flex" : 'none'}}
+          data={fullOrderList}
+          keyExtractor={(item) => `key-${item.id}`}
+          renderItem={({item, index}) => {
+            return(
+              <ItemOrder 
+                item={item}
+                index={index}
+              />
+            )
+          }}
+        />
+      </View>
       <View
         style={{
           flexDirection: "row",
@@ -78,15 +96,6 @@ export default function Cart() {
           99,999 đ
         </Text>
       </View>
-      {/* {listCart !== null ? (
-        <FlatList
-          data={listCart}
-          renderItem={Item}
-          keyExtractor={(item) => item.id}
-        />
-      ) : (
-        <Text style={[styles.f_title__title]}>Giỏ hàng rỗng </Text>
-      )} */}
     </SafeAreaView>
   );
 }
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
   },
   viewProductList: {
     width: '95%',
-    height: '60%',
+    height: '70%',
     backgroundColor: 'yellow'
   }
 });
