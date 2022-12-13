@@ -79,7 +79,6 @@ export default function Home() {
   ////////// flatlist render item data
   const [fullFilterList, setFullFilterList] = useState([{}]);
   useEffect(() => {
-    // ok
     axiosConfig.get("/Sản phẩm.json").then((response) => {
       // console.log(response.data);
       // const getData = [];
