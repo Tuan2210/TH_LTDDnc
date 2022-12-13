@@ -24,7 +24,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import axiosConfig from "../axiosConfig";
 
 let listOrders = [];
-function Home() {
+export default function Home() {
   ////////// flatList filter btn
   const dataFilter = [
     {
@@ -274,7 +274,7 @@ function Home() {
   );
 }
 
-export {Home, listOrders};
+// export {Home, listOrders};
 
 const styles = StyleSheet.create({
   container: {
