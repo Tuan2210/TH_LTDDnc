@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   View,
+  Alert,
 } from "react-native";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -22,7 +23,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // import { realtimeDBFireBase } from "./config";
 import axiosConfig from "../axiosConfig";
 
-export default function Home() {
+let listOrders = [];
+function Home() {
   ////////// flatList filter btn
   const dataFilter = [
     {
@@ -109,7 +111,7 @@ export default function Home() {
     //                                  .catch(console.error);
     // const filtered = fullFilterList.filter(item => item.title === titleFilter);
 
-    let listFiltered = null;
+    let listFiltered = [];
     if (titleFilter === "Cà phê sữa") {
       listFiltered = fullFilterList.filter((item) => item.title === titleFilter); //title realtimeDB firebase
       console.log('List cà phê sữa:');
@@ -174,7 +176,7 @@ export default function Home() {
               padding: 10,
               borderRadius: 10,
             }}
-            // onPress={() => handlekAddCart(item)}
+            onPress={() => handleAddToCart(item)}
           >
             <Text style={{ fontWeight: "bold" }}>ADD</Text>
           </TouchableOpacity>
@@ -185,7 +187,37 @@ export default function Home() {
   //////////
 
   ////////// hande add to cart
-  const handleAddToCart = () => {
+  function handleAddToCart(itemAdd) {
+    // let flag = false;
+    // listOrders.map(itemOrder => {
+    //   if(itemOrder.id === itemAdd.id){
+    //     itemOrder.quantity = itemOrder.quantity+1;
+    //     itemOrder.price = itemAdd.price * itemOrder.quantity;
+    //   }
+    // })
+    // if(flag)
+
+    listOrders.push({ ...itemAdd, quantity: 1 });
+    // console.log(listOrders);
+    // axiosConfig.post(`/Giỏ hàng/${itemAdd.id}.json`, listOrders).then((response) => {
+    axiosConfig.post("/Giỏ hàng.json", listOrders).then((response) => {
+      console.log("Đã thêm:");
+      console.log(response.data);
+      listOrders = [];
+      Alert.alert("Đã thêm vào giỏ hàng!");
+    });
+
+    // listOrders.map(itemOrder => {
+    //   if(itemOrder.id === itemAdd.id){
+    //     itemOrder.quantity = itemOrder.quantity+1;
+    //     itemOrder.price = itemAdd.price * itemOrder.quantity;
+    //     axiosConfig.put(`/Giỏ hàng/${itemOrder.id}.json`, listOrders).then((response) => {
+    //       console.log("Đã thêm:");
+    //       console.log(response.data);
+    //       Alert.alert("Đã thêm vào giỏ hàng!");
+    //     });
+    //   }      
+    // })
     
   }
   //////////
@@ -224,8 +256,7 @@ export default function Home() {
           // keyExtractor={(item) => item.id} //nào cũng đc
           keyExtractor={(item) => `key-${item.id}`}
           renderItem={({ item }) => {
-            const backgroundColor =
-              item.id === selectedIdItemData ? "#fff" : "black";
+            const backgroundColor = item.id === selectedIdItemData ? "#fff" : "black";
             const color = item.id === selectedIdItemData ? "black" : "#fff";
             return (
               <ItemData
@@ -242,6 +273,8 @@ export default function Home() {
     </SafeAreaView>
   );
 }
+
+export {Home, listOrders};
 
 const styles = StyleSheet.create({
   container: {

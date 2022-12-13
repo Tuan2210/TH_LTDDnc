@@ -10,7 +10,7 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 //link doc top tabs: https://reactnavigation.org/docs/material-top-tab-navigator/
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import Home from "./tabs/Home";
+import { Home } from "./tabs/Home";
 import Cart from "./tabs/Cart";
 
 const Tab = createMaterialTopTabNavigator();
